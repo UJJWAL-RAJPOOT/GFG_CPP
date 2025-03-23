@@ -1,23 +1,18 @@
 //{ Driver Code Starts
-//Initial Template for C++
-
+// Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
-stack<int> _push(int arr[],int n);
-
-void _getMinAtPop(stack<int>s);
 
 // } Driver Code Ends
 
-//User function Template for C++
+// User function Template for C++
 
-
-//Function to push all the elements into the stack.
-stack<int> _push(int arr[],int n)
-{
-    stack<int>st;
+// Function to push all the elements into the stack.
+stack<int> push(vector<int>& arr) {
+      stack<int>st;
+      int n=arr.size();
     for(int i=0;i<n;i++){
         if(i==0)
         st.push(arr[i]);
@@ -27,34 +22,35 @@ stack<int> _push(int arr[],int n)
     return st;
 }
 
-//Function to print minimum value in stack each time while popping.
-void _getMinAtPop(stack<int>s)
-{
-    while(!s.empty()){
+// Function to print minimum value in stack each time while popping.
+void getMinAtPop(stack<int> s) {
+     while(!s.empty()){
         cout<<s.top()<<" ";
         s.pop();
     }
 }
 
+
 //{ Driver Code Starts.
 int main() {
-	int t;
-	cin>>t;
-	while(t--)
-	{
-	    int n;
-	    cin>>n;
-	    int arr[n];
-	    for(int i=0;i<n;i++)
-	    cin>>arr[i];
-	    stack<int>mys=_push(arr,n);
-	    _getMinAtPop(mys);
-	    
-	    cout<<endl;
-	    
-	}
-	return 0;
-}
+    int t;
+    cin >> t;
+    cin.ignore();
+    while (t--) {
+        string line;
+        getline(cin, line);
+        stringstream ss(line);
+        vector<int> arr;
+        int num;
+        while (ss >> num) {
+            arr.push_back(num);
+        }
+        stack<int> s = push(arr);
+        getMinAtPop(s);
 
+        cout << endl;
+    }
+    return 0;
+}
 
 // } Driver Code Ends
