@@ -44,13 +44,12 @@ class Solution {
     // Function to check if the linked list has a loop.
     bool detectLoop(Node* head) {
         // your code here
-        Node* curr=head;
-        unordered_map<Node*,bool>visited;
-        while(curr!=NULL){
-            if(visited[curr]==1)
+        Node *slow=head,*fast=head;
+        while(fast!=NULL && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)
             return 1;
-            visited[curr]=1;
-            curr=curr->next;
         }
         return 0;
     }
